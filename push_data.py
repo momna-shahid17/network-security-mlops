@@ -49,7 +49,7 @@ class NetworkDataExtract():
             raise NetworkSecurityException(e,sys)
         
 if __name__=='__main__':
-    FILE_PATH="Network_data\PhisingData.csv"
+    FILE_PATH="Network_data\phisingData.csv"
     DATABASE="MOMNAAI"
     Collection="NetworkData"
     networkobj=NetworkDataExtract()
