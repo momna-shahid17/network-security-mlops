@@ -418,19 +418,6 @@ Every push to the `main` branch automatically triggers the deployment pipeline.
 
 ---
 
-# 📷 Project Screenshots
-
-Add screenshots here after completing the project.
-
-- MLflow Dashboard
-- DagsHub Experiments
-- GitHub Actions Workflow
-- Amazon ECR Repository
-- EC2 Deployment
-- Prediction Interface
-
----
-
 # 🔮 Future Improvements
 
 - Kubernetes Deployment
