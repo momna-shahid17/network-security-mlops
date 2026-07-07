@@ -3,7 +3,6 @@
 <div align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-orange?logo=scikitlearn)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?logo=mongodb)
 ![MLflow](https://img.shields.io/badge/MLflow-Experiment%20Tracking-blue)
 ![Docker](https://img.shields.io/badge/Docker-Containerization-2496ED?logo=docker)
@@ -12,17 +11,23 @@
 
 ### End-to-End MLOps Pipeline for Network Security Threat Detection
 
-A production-ready Machine Learning Operations (MLOps) project that automates data ingestion, model training, experiment tracking, containerization, CI/CD, and deployment on AWS.
+Production-ready MLOps project with automated CI/CD using **GitHub Actions → Docker → Amazon ECR → Self-Hosted GitHub Runner → AWS EC2**.
 
 </div>
 
 ---
 
-# 📌 Project Overview
+# 📌 Repository
 
-This project implements a production-ready Machine Learning pipeline for Network Security Threat Detection.
+**GitHub:** https://github.com/momna-shahid17/network-security-mlops
 
-The complete workflow automates:
+---
+
+# 📖 Overview
+
+This project demonstrates a complete production-ready Machine Learning Operations (MLOps) workflow for Network Security Threat Detection.
+
+The project automates:
 
 - Data Ingestion
 - Data Validation
@@ -32,12 +37,12 @@ The complete workflow automates:
 - MLflow Experiment Tracking
 - DagsHub Integration
 - Model Evaluation
-- Batch Prediction
 - AWS S3 Artifact Storage
 - Docker Containerization
 - GitHub Actions CI/CD
-- Amazon ECR Image Registry
-- Automated Deployment on AWS EC2
+- Amazon ECR
+- AWS EC2 Deployment using Self-Hosted Runner
+- FastAPI Model Serving
 
 ---
 
@@ -45,185 +50,84 @@ The complete workflow automates:
 
 - End-to-End MLOps Pipeline
 - ETL Pipeline
-- MongoDB Atlas Integration
-- Data Validation
-- Data Transformation
-- Model Training Pipeline
-- Hyperparameter Tuning
-- MLflow Experiment Tracking
-- DagsHub Remote Tracking
-- Batch Prediction Pipeline
-- AWS S3 Model Artifact Storage
-- Docker Containerization
-- Automated GitHub Actions CI/CD
-- Amazon ECR Integration
-- Self-Hosted GitHub Runner Deployment
+- MongoDB Atlas
+- MLflow
+- DagsHub
+- Docker
+- GitHub Actions
+- Amazon ECR
+- Amazon EC2
+- Amazon S3
+- FastAPI
+- Automated Deployment
 
 ---
 
-# 🏗️ Project Workflow
+# 🏗️ Architecture
 
-```
-Network Dataset
-        │
-        ▼
-MongoDB Atlas
-        │
-        ▼
-Data Ingestion
-        │
-        ▼
-Data Validation
-        │
-        ▼
-Data Transformation
-        │
-        ▼
-Model Training
-        │
-        ▼
-Hyperparameter Tuning
-        │
-        ▼
-MLflow + DagsHub
-        │
-        ▼
-Model Evaluation
-        │
-        ▼
-AWS S3
-        │
-        ▼
-GitHub Repository
-        │
-        ▼
-GitHub Actions (CI)
-        │
-        ▼
-Docker Image Build
-        │
-        ▼
-Amazon ECR
-        │
-        ▼
-Self-Hosted GitHub Runner (EC2)
-        │
-        ▼
-Pull Latest Docker Image
-        │
-        ▼
-Run Updated Container
-        │
-        ▼
-Prediction API
+Add your generated architecture diagram here.
+
+```markdown
+![Architecture](assets/images/architecture.png)
 ```
 
 ---
 
 # 📂 Repository Structure
 
-```
+```text
 network-security-mlops/
-
-│── .github/
+│
+├── assets/
+│   └── images/
+├── .github/
 │   └── workflows/
-
-│── Network_data/
-│── data_schema/
-
-│── networksecurity/
-│   ├── components/
-│   ├── configuration/
-│   ├── constant/
-│   ├── entity/
-│   ├── exception/
-│   ├── logging/
-│   ├── pipeline/
-│   └── utils/
-
-│── templates/
-
-│── app.py
-│── main.py
-│── Dockerfile
-│── requirements.txt
-│── setup.py
-│── README.md
+├── Network_data/
+├── data_schema/
+├── networksecurity/
+├── templates/
+├── Dockerfile
+├── app.py
+├── main.py
+├── requirements.txt
+├── setup.py
+└── README.md
 ```
 
 ---
 
-# 🛠️ Tech Stack
-
-### Programming
+# 🛠 Tech Stack
 
 - Python
-
-### Machine Learning
-
 - Scikit-learn
 - Pandas
 - NumPy
-
-### Database
-
 - MongoDB Atlas
-
-### Experiment Tracking
-
 - MLflow
 - DagsHub
-
-### Cloud
-
+- FastAPI
+- Docker
+- GitHub Actions
 - Amazon EC2
 - Amazon ECR
 - Amazon S3
-
-### DevOps
-
-- Docker
-- GitHub Actions
-- Self-Hosted GitHub Runner
 
 ---
 
 # ⚙️ Installation
 
-## Clone Repository
-
 ```bash
 git clone https://github.com/momna-shahid17/network-security-mlops.git
 
 cd network-security-mlops
-```
 
----
-
-## Create Virtual Environment
-
-### Windows
-
-```bash
 python -m venv venv
 
+# Windows
 venv\Scripts\activate
-```
 
-### Linux
-
-```bash
-python3 -m venv venv
-
+# Linux/macOS
 source venv/bin/activate
-```
-
----
-
-## Install Dependencies
-
-```bash
-pip install --upgrade pip
 
 pip install -r requirements.txt
 ```
@@ -235,7 +139,7 @@ pip install -r requirements.txt
 Create a `.env` file.
 
 ```env
-MONGODB_URL=<your-mongodb-connection-string>
+MONGODB_URL=<your-mongodb-url>
 
 AWS_ACCESS_KEY_ID=<your-access-key>
 
@@ -243,69 +147,37 @@ AWS_SECRET_ACCESS_KEY=<your-secret-key>
 
 AWS_REGION=<your-region>
 
-AWS_BUCKET_NAME=<your-s3-bucket>
+AWS_BUCKET_NAME=<your-bucket>
 ```
 
 ---
 
 # 🔑 GitHub Secrets
 
-Configure the following secrets inside your GitHub repository.
+Configure these repository secrets:
 
-| Secret Name | Description |
-|-------------|-------------|
-| AWS_ACCESS_KEY_ID | AWS Access Key |
-| AWS_SECRET_ACCESS_KEY | AWS Secret Access Key |
-| AWS_REGION | AWS Region |
-| AWS_ECR_LOGIN_URI | Amazon ECR Login URI |
-| ECR_REPOSITORY_NAME | Amazon ECR Repository Name |
-
-Navigate to:
-
-```
-Repository
-    ↓
-Settings
-    ↓
-Secrets and variables
-    ↓
-Actions
-    ↓
-New Repository Secret
-```
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_ACCESS_KEY
+- AWS_REGION
+- AWS_ECR_LOGIN_URI
+- ECR_REPOSITORY_NAME
 
 ---
 
-# ☁️ AWS EC2 Setup
-
-Run the following commands **once** on your Ubuntu EC2 instance.
-
-## Update Packages
+# ☁️ EC2 Setup
 
 ```bash
 sudo apt update -y
 sudo apt upgrade -y
-```
 
-## Install Docker
-
-```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
 
 sudo sh get-docker.sh
-```
 
-## Configure Docker Permission
-
-```bash
 sudo usermod -aG docker ubuntu
 
 newgrp docker
-```
 
-## Verify Docker
-
-```bash
 docker --version
 
 docker ps
@@ -314,8 +186,6 @@ docker ps
 ---
 
 # 📊 MLflow
-
-Start MLflow UI
 
 ```bash
 mlflow ui
@@ -329,15 +199,11 @@ http://127.0.0.1:5000
 
 ---
 
-# 🚀 Train the Model
+# 🚀 Run Locally
 
 ```bash
 python main.py
 ```
-
----
-
-# 🌐 Run the Application Locally
 
 ```bash
 python app.py
@@ -345,31 +211,24 @@ python app.py
 
 ---
 
-# 🐳 Docker & Deployment
+# 🐳 Automated Docker Deployment
 
-Docker is used for containerizing the application.
+The Docker image is **automatically** built and deployed.
 
-The Docker image is **not built manually** during deployment.
+Workflow:
 
-Instead, the complete build and deployment process is fully automated using GitHub Actions.
+1. Push code to `main`
+2. GitHub Actions starts
+3. Docker image is built
+4. Docker image is pushed to Amazon ECR
+5. Self-hosted GitHub Runner running on EC2 pulls the latest image
+6. New container is deployed automatically
 
-Deployment Flow:
-
-- Push code to the `main` branch
-- GitHub Actions starts automatically
-- Docker image is built
-- Docker image is pushed to Amazon ECR
-- Self-Hosted GitHub Runner on EC2 pulls the latest image
-- Existing container is replaced with the latest version
-- Updated application is deployed automatically
-
-No manual Docker build or push commands are required.
+**No manual Docker build or push commands are required for deployment.**
 
 ---
 
 # 🔄 CI/CD Pipeline
-
-The project uses GitHub Actions for Continuous Integration and Continuous Deployment.
 
 ### Continuous Integration
 
@@ -381,18 +240,36 @@ The project uses GitHub Actions for Continuous Integration and Continuous Deploy
 
 ### Continuous Deployment
 
-Using a Self-Hosted GitHub Runner on AWS EC2:
-
-- Authenticate with Amazon ECR
-- Pull Latest Docker Image
+- Login to Amazon ECR
+- Pull Latest Image
 - Deploy Updated Container
-- Clean Unused Docker Resources
+- Clean Unused Docker Images
 
-Every push to the `main` branch automatically triggers the deployment pipeline.
+Deployment is automatically triggered on every push to the **main** branch.
 
 ---
 
-# ☁️ AWS Services Used
+# 📸 Project Screenshots
+
+```markdown
+![Architecture](assets/images/architecture.png)
+
+![GitHub Actions](assets/images/github-actions.png)
+
+![Amazon ECR](assets/images/aws-ecr.png)
+
+![AWS EC2](assets/images/aws-ec2.png)
+
+![Amazon S3](assets/images/aws-s3.png)
+
+![MongoDB Atlas](assets/images/mongodb-atlas.png)
+
+![FastAPI](assets/images/fastapi-docs.png)
+```
+
+---
+
+# ☁️ AWS Services
 
 - Amazon EC2
 - Amazon ECR
@@ -401,6 +278,7 @@ Every push to the `main` branch automatically triggers the deployment pipeline.
 
 ---
 
+<<<<<<< HEAD
 # 📈 Experiment Tracking
 
 ### MLflow
@@ -418,16 +296,18 @@ Every push to the `main` branch automatically triggers the deployment pipeline.
 
 ---
 
+=======
+>>>>>>> c2f1cb8 (Update README.md & Add Images)
 # 🔮 Future Improvements
 
-- Kubernetes Deployment
-- Helm Charts
-- ArgoCD GitOps
-- Prometheus Monitoring
-- Grafana Dashboard
-- Model Drift Detection
+- Kubernetes
+- Helm
+- ArgoCD
+- Prometheus
+- Grafana
+- Kafka
 - Feature Store
-- Kafka Streaming
+- Model Drift Detection
 
 ---
 
@@ -437,16 +317,10 @@ Every push to the `main` branch automatically triggers the deployment pipeline.
 
 DevOps • Cloud • Kubernetes • MLOps Engineer
 
-**GitHub**
-
+GitHub:
 https://github.com/momna-shahid17
 
-**Project Repository**
-
-https://github.com/momna-shahid17/network-security-mlops
-
-**LinkedIn**
-
+LinkedIn:
 https://www.linkedin.com/in/momna-shahid/
 
 ---
